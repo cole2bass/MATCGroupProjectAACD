@@ -15,4 +15,10 @@
 
 <ion-content padding>
 
+  <ion-searchbar clear type="text" placeholder="Search" autocomplete="on" [(ngModel)]="myInput">
+  </ion-searchbar>
+
+  <button ion-button full (click)="itemSelected($event, data)">Search for My Movie</button>
+  <button ion-button full (click)="itemSelected($event, data)">Search for User</button>
+  <button ion-button full (click)="itemSelected($event, data)">Search for Movie</button>
 </ion-content>
