@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {MyMoviesPage} from "../my-movies/my-movies";
-import {UsersSearchPage} from "../users-search/users-search";
-import {MoviesSearchPage} from "../movies-search/movies-search";
 import {SearchPage} from "../search/search";
 
 /**
