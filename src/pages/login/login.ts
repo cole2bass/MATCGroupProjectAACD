@@ -11,15 +11,24 @@ import {UserHomePage} from "../user-home/user-home";
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
+  templateUrl: 'login.html'
 })
 export class LoginPage {
+
+  email: any;
+  password:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+
+  login(){
+
+
   }
 
   itemSelected($event, data){

@@ -16,6 +16,15 @@ import {LoginPage} from "../login/login";
 export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    window.localStorage.removeItem('currentuser');
+    if(!this.isLoggedin()){
+
+      console.log('You are not logged in');
+      this.navCtrl.push(LoginPage);
+
+    }
+
   }
 
   ionViewDidLoad() {
@@ -25,5 +34,17 @@ export class HomePage {
   itemSelected($event, data){
     this.navCtrl.push(LoginPage);
   }
+
+  isLoggedin(){
+
+    if(window.localStorage.getItem('currentuser')){
+
+       return true;
+
+    }
+
+  }
+
+
 
 }
