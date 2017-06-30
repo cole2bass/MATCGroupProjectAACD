@@ -1,3 +1,12 @@
+# MATC Group Project
+Members:
+* Adrien
+* Athira
+* Cole
+* Devan
+
+Below is default Ionic stuff we need to get rid of.
+
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
 ## How to use this template
