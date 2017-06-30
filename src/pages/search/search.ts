@@ -1,29 +1,24 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {LoginPage} from "../login/login";
 
 /**
- * Generated class for the HomePage page.
+ * Generated class for the SearchPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-search',
+  templateUrl: 'search.html',
 })
-export class HomePage {
+export class SearchPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
-
-  itemSelected($event, data){
-    this.navCtrl.push(LoginPage);
+    console.log('ionViewDidLoad SearchPage');
   }
 
 }
