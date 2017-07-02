@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {MovieDetailPage} from "../movie-detail/movie-detail";
+import {UserDetailPage} from "../user-detail/user-detail";
 
 /**
  * Generated class for the SearchPage page.
@@ -19,6 +21,18 @@ export class SearchPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
+  }
+
+  myMovieSelected($event, data){
+    this.navCtrl.push(MovieDetailPage);
+  }
+
+  userSelected($event, data){
+    this.navCtrl.push(UserDetailPage);
+  }
+
+  movieSelected($event, data){
+    this.navCtrl.push(MovieDetailPage);
   }
 
 }
