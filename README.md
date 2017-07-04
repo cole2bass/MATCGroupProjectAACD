@@ -1,3 +1,12 @@
+# MATC Group Project
+Members:
+* admanaus
+* athiravijayan91
+* cole2bass
+* bardleware
+
+the following is ionic boilerplate 
+
 This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
 
 ## How to use this template
