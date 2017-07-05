@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserHomePage} from "../user-home/user-home";
+import { AuthProviders, AuthMethods, AngularFire } from 'angularfire2';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+
+
+
+
 
 /**
  * Generated class for the LoginPage page.
@@ -14,22 +22,35 @@ import {UserHomePage} from "../user-home/user-home";
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
   email: any;
-  password:any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  password: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public angfire: AngularFire) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-
-  login(){
-
-
+  login() {
+    this.angfire.auth.login({
+        email: this.email,
+        password: this.password
+      },
+      {
+        provider: AuthProviders.Password,
+        method: AuthMethods.Password
+      }).then((response) => {
+      console.log('Login success' + JSON.stringify(response));
+      let currentuser = {
+        email: response.auth.email,
+        picture: response.auth.photoURL
+      };
+      window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+      this.navCtrl.pop();
+    }).catch((error) => {
+      console.log(error);
+    })
   }
+
 
   itemSelected($event, data){
     this.navCtrl.push(UserHomePage);
