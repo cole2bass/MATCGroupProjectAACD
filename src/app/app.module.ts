@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import {AngularFireModule} from 'angularfire2';
+import {HttpModule} from "@angular/http";
+import { AngularFireModule } from 'angularfire2';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +16,8 @@ import {MovieDetailPage} from "../pages/movie-detail/movie-detail";
 import {UserDetailPage} from "../pages/user-detail/user-detail";
 import {UserHomePage} from "../pages/user-home/user-home";
 import {SearchPage} from "../pages/search/search";
+import {FalseUserService} from "../assets/services/falseUser.service"
+
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import {SearchPage} from "../pages/search/search";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,6 +49,7 @@ import {SearchPage} from "../pages/search/search";
   providers: [
     StatusBar,
     SplashScreen,
+    FalseUserService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
