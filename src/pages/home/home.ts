@@ -37,18 +37,12 @@ export class HomePage {
     this.navCtrl.push(LoginPage);
   }
 
-  isLoggedin(){
+  isLoggedin() {
 
-    if(window.localStorage.getItem('currentuser')){
+    if (window.localStorage.getItem('currentuser')) {
 
-       return true;
+      return true;
 
     }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
   }
-
-
-
 }
