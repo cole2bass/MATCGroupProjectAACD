@@ -20,7 +20,7 @@ export class FalseUserService {
     this.getUsers().subscribe( response => {
       let res = response.results;
       for (let i = 0; i < res.length; i++) {
-        let user: User = {firstName: res[i].name.first, lastName: res[i].name.last, gender: res[i].gender, email: res[i].email};
+        // let user: User = {firstName: res[i].name.first, lastName: res[i].name.last, gender: res[i].gender, email: res[i].email};
 
       }
       console.log(response.results);
