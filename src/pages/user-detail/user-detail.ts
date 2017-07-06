@@ -20,8 +20,4 @@ export class UserDetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserDetailPage');
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> Minor changes
 }
