@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import {HttpModule} from "@angular/http";
-import { AngularFireModule } from 'angularfire2';
+import {AngularFireModule} from "angularfire2"
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -41,8 +42,8 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
