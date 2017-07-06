@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import {LoginPage} from "../login/login";
 import {FalseUserService} from "../../assets/services/falseUser.service";
 
@@ -44,6 +45,8 @@ export class HomePage {
 
     }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
 
