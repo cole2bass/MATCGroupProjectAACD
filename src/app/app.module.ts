@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import {HttpModule} from "@angular/http";
 import { AngularFireModule } from 'angularfire2';
+import{AngularFireAuthModule}from 'angularfire2/auth'
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,17 +16,9 @@ import {MovieDetailPage} from "../pages/movie-detail/movie-detail";
 import {UserDetailPage} from "../pages/user-detail/user-detail";
 import {UserHomePage} from "../pages/user-home/user-home";
 import {SearchPage} from "../pages/search/search";
-import {FalseUserService} from "../assets/services/falseUser.service"
-
-//Angular Fire2 Settings
-export const firebaseConfig = {
-  apiKey: "AIzaSyAxlSSfMhul10KR5yVyiIP3PxvC95TRdJA",
-  authDomain: "matc-ionic-movies.firebaseapp.com",
-  databaseURL: "https://matc-ionic-movies.firebaseio.com",
-  projectId: "matc-ionic-movies",
-  storageBucket: "matc-ionic-movies.appspot.com",
-  messagingSenderId: "678663492397"
-};
+import {FalseUserService} from "../assets/services/falseUser.service";
+import { firebaseconfig} from "./app.firebase.config";
+import {RegisterPage} from "../pages/register/register";
 
 @NgModule({
   declarations: [
@@ -36,13 +29,16 @@ export const firebaseConfig = {
     MovieDetailPage,
     SearchPage,
     UserDetailPage,
-    UserHomePage
+    UserHomePage,
+    RegisterPage
+
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    HttpModule
+    AngularFireModule.initializeApp(firebaseconfig),
+    HttpModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +49,8 @@ export const firebaseConfig = {
     MovieDetailPage,
     SearchPage,
     UserDetailPage,
-    UserHomePage
+    UserHomePage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
