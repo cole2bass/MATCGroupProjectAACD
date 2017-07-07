@@ -25,6 +25,7 @@ export class HomePage {
       console.log('You are not logged in');
       this.navCtrl.push(LoginPage);
 
+
     }
   }
 

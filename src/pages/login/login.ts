@@ -1,38 +1,51 @@
+import { NavController, LoadingController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {UserHomePage} from "../user-home/user-home";
+import { ForgotPasswordPage } from '../forgot-password/forgot-password';
+import { SignUpPage } from '../sign-up/sign-up';
+import { AuthProvider } from '../../../providers/auth';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login-email.html',
+  selector: 'login-email',
 })
-export class LoginPage {
 
-  email: any;
-  password:any;
+export class LoginEmailPage {
+  error: any;
+  form: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private auth: AuthProvider,
+              private loadingCtrl: LoadingController
+  ) {
+    this.form = {
+      email: '',
+      password: ''
+    }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  openForgotPasswordPage(): void {
+    this.navCtrl.push(ForgotPasswordPage);
   }
 
-
-  login(){
-
-
+  openSignUpPage(): void {
+    this.navCtrl.push(SignUpPage);
   }
 
-  itemSelected($event, data){
-    this.navCtrl.push(UserHomePage);
-  }
+  login() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
 
+    this.auth.loginWithEmail(this.form).subscribe(data => {
+      setTimeout(() => {
+        loading.dismiss();
+        // The auth subscribe method inside the app.ts will handle the page switch to home
+      }, 1000);
+    }, err => {
+      setTimeout(() => {
+        loading.dismiss();
+        this.error = err;
+      }, 1000);
+    });
+  }
 }

@@ -27,6 +27,20 @@ export const firebaseConfig = {
   messagingSenderId: "678663492397"
 };
 
+
+
+// Initialize Firebase
+export const config = {
+  apiKey: "AIzaSyAxlSSfMhul10KR5yVyiIP3PxvC95TRdJA",
+  authDomain: "matc-ionic-movies.firebaseapp.com",
+  databaseURL: "https://matc-ionic-movies.firebaseio.com",
+  projectId: "matc-ionic-movies",
+  storageBucket: "matc-ionic-movies.appspot.com",
+  messagingSenderId: "678663492397"
+};
+
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,8 +55,12 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+<<<<<<< HEAD
     AngularFireModule.initializeApp(firebaseConfig),
     HttpModule
+=======
+    AngularFireModule.initializeApp(config)
+>>>>>>> added firebase
   ],
   bootstrap: [IonicApp],
   entryComponents: [
