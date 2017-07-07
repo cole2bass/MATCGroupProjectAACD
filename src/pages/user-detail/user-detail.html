@@ -7,18 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>UserDetailPage</ion-title>
+    <ion-title>DetailPage</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
   <ion-item>
     <ion-avatar item-start>
-      <img src="assets/images/BruceLee.jpg">
+      <img src="{{(sampleUser | async)?.picture.thumbnail}}">
     </ion-avatar>
-    <h2>Bruce Lee</h2>
+    <h2>{{(sampleUser | async)?.name.first | titlecase}} {{(sampleUser | async)?.name.last | titlecase}}</h2>
     <p>55 Movie Ratings</p>
   </ion-item>
 
