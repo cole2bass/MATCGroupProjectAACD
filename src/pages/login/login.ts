@@ -1,59 +1,51 @@
+import { NavController, LoadingController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {UserHomePage} from "../user-home/user-home";
-import { AuthProviders, AuthMethods, AngularFire } from 'angularfire2';
-import {AngularFireModule} from 'angularfire2';
-import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { ForgotPasswordPage } from '../forgot-password/forgot-password';
+import { SignUpPage } from '../sign-up/sign-up';
+import { AuthProvider } from '../../../providers/auth';
 
-
-
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login-email.html',
+  selector: 'login-email',
 })
-export class LoginPage {
-  email: any;
-  password: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public angfire: AngularFire) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+export class LoginEmailPage {
+  error: any;
+  form: any;
+
+  constructor(private navCtrl: NavController, private auth: AuthProvider,
+              private loadingCtrl: LoadingController
+  ) {
+    this.form = {
+      email: '',
+      password: ''
+    }
+  }
+
+  openForgotPasswordPage(): void {
+    this.navCtrl.push(ForgotPasswordPage);
+  }
+
+  openSignUpPage(): void {
+    this.navCtrl.push(SignUpPage);
   }
 
   login() {
-    this.angfire.auth.login({
-        email: this.email,
-        password: this.password
-      },
-      {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password
-      }).then((response) => {
-      console.log('Login success' + JSON.stringify(response));
-      let currentuser = {
-        email: response.auth.email,
-        picture: response.auth.photoURL
-      };
-      window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
-      this.navCtrl.pop();
-    }).catch((error) => {
-      console.log(error);
-    })
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
+    this.auth.loginWithEmail(this.form).subscribe(data => {
+      setTimeout(() => {
+        loading.dismiss();
+        // The auth subscribe method inside the app.ts will handle the page switch to home
+      }, 1000);
+    }, err => {
+      setTimeout(() => {
+        loading.dismiss();
+        this.error = err;
+      }, 1000);
+    });
   }
-
-
-  itemSelected($event, data){
-    this.navCtrl.push(UserHomePage);
-  }
-
 }
