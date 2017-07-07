@@ -12,3 +12,18 @@ export interface Movie {
   status: string;
   title: string;
 }
+
+// export interface Language {
+//   iso_639_1: string;
+//   name: string;
+// }
+//
+// export interface Company {
+//   name: string;
+//   id: number;
+// }
+//
+// export interface Genre {
+//   id: number;
+//   name: string;
+// }
