@@ -38,6 +38,8 @@ import {RegisterPage} from "../pages/register/register";
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseconfig),
     HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],

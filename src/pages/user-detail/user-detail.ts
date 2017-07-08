@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AngularFireDatabase} from "angularfire2/database";
 
 /**
  * Generated class for the UserDetailPage page.
@@ -14,10 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UserDetailPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  sampleUser = this.db.object("https://matc-ionic-movies.firebaseio.com/users/users/0");
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private db: AngularFireDatabase,
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserDetailPage');
+
   }
 }
